@@ -9,6 +9,7 @@ class NewsRepository(
 ) {
     suspend fun getBreakingNews(coutryCode: String, pageNumber: Int)=
        RetrofitInstance.api.getBreakingNews(coutryCode,pageNumber)
+
     suspend fun searchNews(searchQuery: String,pageNumber: Int)=
         RetrofitInstance.api.searchForNews(searchQuery,pageNumber)
 

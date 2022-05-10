@@ -5,10 +5,12 @@ import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.androiddevs.mvvmnewsapp.LoadingDialog
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+
 import kotlinx.android.synthetic.main.fragment_article.*
 
 
@@ -22,6 +24,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         viewModel= (activity as NewsActivity).viewModel
 
         val article = args.article
+        var dialog = LoadingDialog(this)
 
         webView.apply {
             webViewClient= WebViewClient()
@@ -30,6 +33,12 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         fab.setOnClickListener{
             viewModel.saveArticle(article)
             Snackbar.make(view,"Article saved successfully",Snackbar.LENGTH_SHORT).show()
+        }
+
+
+        fab1.setOnClickListener {
+dialog.startLoadingDialog()
+
         }
     }
 }
